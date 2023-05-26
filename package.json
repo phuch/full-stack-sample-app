@@ -1,6 +1,6 @@
 {
   "name": "full-stack-sample-app",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "scripts": {
     "clean": "rm -rf node_modules",
@@ -16,8 +16,10 @@
     "client-eject": "react-app-rewired eject"
   },
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
