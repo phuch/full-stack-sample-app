@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes');
+// var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
 var app = express();
@@ -20,8 +20,40 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+
+
+/**
+ * Index Routes
+ */
+// app.use('/', indexRouter); // We are manually using index routes instead of a router
+if (process.env.NODE_ENV === "production") {
+  // Static directory
+  app.use(express.static(path.join(__dirname, 'public/dist')));
+
+  // Handle SPA
+  app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'public/dist', 'index.html'));
+  });
+} else {
+  /* GET home page. */
+  app.get('/', function(req, res, next) {
+    res.render('index', { title: 'Express' });
+  });
+}
+
+/* GET random number between 0 and 1. */
+app.get('/random', function(req, res, next) {
+  res.status(200).send(`${Math.floor(Math.random() * 100)}`);
+});
+
+/**
+ * Users Routes
+ */
 app.use('/users', usersRouter);
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
+
 app.use(cors({
   origin: 'http://localhost:3000'
 }));

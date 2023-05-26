@@ -7,24 +7,28 @@ The FE client was bootstrapped with [Create React App](https://github.com/facebo
 The BE server was generated with the Express default generator.
 
 ## Project setup
-
 ```
 npm install
 ```
 
-### Run whole webapp
-
+### Run whole webapp in development mode
 ```
+npm run dev
+```
+
+### Run only backend server in development mode
+```
+npm run server-dev
+```
+
+### Build frontend client and run whole webapp in production mode
+```
+npm run build
 npm run start
-```
-
-### Run only backend server
-
-```
-npm run server-start
 ```
 
 ## RELEASES
 
+- v3.0.0 - Production mode
 - v2.0.0 - Include both React Frontend and Express Backend
 - v1.0.0 - Include Express Backend
